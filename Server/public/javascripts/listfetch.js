@@ -160,12 +160,12 @@ function getContent(data) {
         if(imageContent)
             item = imageContent+
                 '<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12"><h3><a href="/' +
-                category_temp+'/'+data.group_id+'"'+'>' + title +
+                category_temp+'/article/'+data.group_id+'"'+'>' + title +
                 '</a></h3><p>' + abstract +
                 '</p>';
         else
             item = '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><h3><a href="/' +
-                category_temp+'/'+data.group_id+'"'+'>' + title +
+                category_temp+'/article/'+data.group_id+'"'+'>' + title +
                 '</a></h3><p>' + abstract +
                 '</p>';
     }
@@ -186,13 +186,13 @@ function getContent(data) {
         if(abstract!=undefined)
             item = imageContent+
                 '<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12"><h3><a href="/' +
-                category_temp+'/'+data.group_id+'"'+'>' + title +
+                category_temp+'/video/'+data.group_id+'"'+'>' + title +
                 '</a></h3><p>' + abstract +
                 '</p>';
         else
             item = imageContent+
                 '<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12"><h3><a href="/' +
-                category_temp+'/'+data.group_id+'"'+'>' + title +
+                category_temp+'/video/'+data.group_id+'"'+'>' + title +
                 '</a></h3><p>' + title +
                 '</p>';
     }
@@ -214,7 +214,7 @@ function getContent(data) {
                 '</div>';
         }
         item = imageContent + '<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12"><h3><a href="/' +
-            category_temp+'/'+data.group_id+'"'+'>' + title + '</a></h3>';
+            category_temp+'/gallery/'+data.group_id+'"'+'>' + title + '</a></h3>';
     }
     return item;
 }

@@ -1,6 +1,7 @@
 var itemId;
 var groupId;
 var content;
+var title;
 var offset = 0;
 
 $(function(){
@@ -51,7 +52,14 @@ function analyseNews() {
 
 function parsingRes(data) {
     itemId = data.item_id;
+    title = data.article_title;
     content = data.article_content;
+    $("#article-content").html(content);
+    $("#article-title").text(title);
+    $("img").each(function () {
+        $(this).attr("width","100%");
+    });
+    console.log(title);
     console.log('parsing finish');
 }
 
@@ -59,9 +67,59 @@ function analyseComment() {
     $.get('/news/comment/'+groupId+'/'+itemId+'/'+offset, function (result, status) {
         if( isSuccess(status) ){
             offset+=10;
-            console.log(result);
+            if(result.message == "success"){
+                var adata = result.data.comments;
+                for(var i = 0; i < adata.length; i++){
+                    var replyCount = adata[i].reply_count;
+                    var agreeCount = adata[i].digg_count;
+                    var source = adata[i].user.name;
+                    var avatar_url = adata[i].user.avatar_url;
+                    var content = adata[i].text;
+                    var newItem = '<li> ' +
+                        '<img class="fa img-circle img-sm" alt="User Image" src='+ avatar_url +'> ' +
+                        '<div class="timeline-item"> ' +
+                        '<span class="time"><i class="fa fa-clock-o"></i>'+ milliToDate(adata[i].create_time) +'</span> ' +
+                        '<div class="timeline-header"> ' +
+                        '<a>'+ source +'</a>' + ' · ' +
+                        '<i class="fa fa-commenting-o"></i> ' + replyCount +
+                        '</a>' + ' · ' +
+                        '<i class="fa fa-thumbs-o-up"></i> ' + agreeCount +
+                        '</div> ' +
+                        '<div class="timeline-body">' + content +
+                        '</div> ' +
+                        '</div> ' +
+                        '</li>';
+                    $(".timeline").append(newItem);
+                    console.log(content);
+                }
+                console.log('success')
+            }
         }else{
             console.log('status = ' + status)
         }
     })
+}
+
+$("#more-comment").click(function () {
+    analyseComment();
+});
+//transform millisecond to date xxxx/xx/xx xx:xx:xx
+function milliToDate(milliSecond) {
+    var oDate = new Date(milliSecond*1000),
+        oYear = oDate.getFullYear(),
+        oMonth = oDate.getMonth()+1,
+        oDay = oDate.getDate(),
+        oHour = oDate.getHours(),
+        oMin = oDate.getMinutes(),
+        oSen = oDate.getSeconds(),
+        oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间
+    return oTime;
+}
+
+//fill zero
+function getzf(num){
+    if(parseInt(num) < 10){
+        num = '0'+num;
+    }
+    return num;
 }
