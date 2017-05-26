@@ -257,7 +257,7 @@ function _init() {
       // Remove overflow from .wrapper if layout-boxed exists
       $(".layout-boxed > .wrapper").css('overflow', 'hidden');
       //Get window height and the wrapper height
-      var footer_height = $('.main-footer').outerHeight() || 0;
+      var footer_height = $('.main-footer.ejs').outerHeight() || 0;
       var neg = $('.main-header').outerHeight() + footer_height;
       var window_height = $(window).height();
       var sidebar_height = $(".sidebar").height() || 0;
@@ -572,8 +572,8 @@ function _init() {
       var _this = this;
       //Find the box parent
       var box = element.parents(".box").first();
-      //Find the body and the footer
-      var box_content = box.find("> .box-body, > .box-footer, > form  >.box-body, > form > .box-footer");
+      //Find the body and the footer.ejs
+      var box_content = box.find("> .box-body, > .box-footer.ejs, > form  >.box-body, > form > .box-footer.ejs");
       if (!box.hasClass("collapsed-box")) {
         //Convert minus into plus
         element.children(":first")

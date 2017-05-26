@@ -40,6 +40,8 @@ exports.getComment = function (groupId, itemId, offSet, callback) {
     };
     request.post({url:'http://www.toutiao.com/api/comment/list/', form: jsonData}, function(error, response, body){
         if (!error && response.statusCode == 200) {
+            console.log(body);
+            console.log(jsonData);
             return callback(JSON.parse(body));
         } else {
             return callback(error);

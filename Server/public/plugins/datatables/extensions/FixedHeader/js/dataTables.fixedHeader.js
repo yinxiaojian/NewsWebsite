@@ -4,7 +4,7 @@
 
 /**
  * @summary     FixedHeader
- * @description Fix a table's header or footer, so it is always visible while
+ * @description Fix a table's header or footer.ejs, so it is always visible while
  *              Scrolling
  * @version     2.1.2
  * @file        dataTables.fixedHeader.js
@@ -37,7 +37,7 @@ var factory = function( $, DataTable ) {
 
 /*
  * Function: FixedHeader
- * Purpose:  Provide 'fixed' header, footer and columns for a DataTable
+ * Purpose:  Provide 'fixed' header, footer.ejs and columns for a DataTable
  * Returns:  object:FixedHeader - must be called with 'new'
  * Inputs:   mixed:mTable - target table
  *  @param {object} dt DataTables instance or HTML table node. With DataTables
@@ -47,11 +47,11 @@ var factory = function( $, DataTable ) {
  *  @param {object} [oInit] initialisation settings, with the following
  *    properties (each optional)
  *    * bool:top -    fix the header (default true)
- *    * bool:bottom - fix the footer (default false)
+ *    * bool:bottom - fix the footer.ejs (default false)
  *    * int:left -    fix the left column(s) (default 0)
  *    * int:right -   fix the right column(s) (default 0)
  *    * int:zTop -    fixed header zIndex
- *    * int:zBottom - fixed footer zIndex
+ *    * int:zBottom - fixed footer.ejs zIndex
  *    * int:zLeft -   fixed left zIndex
  *    * int:zRight -  fixed right zIndex
  */
@@ -768,7 +768,7 @@ FixedHeader.prototype = {
 			nTable.removeChild( nTable.childNodes[0] );
 		}
 
-		/* Clone the DataTables footer */
+		/* Clone the DataTables footer.ejs */
 		var nTfoot = $('tfoot', s.nTable).clone(true)[0];
 		nTable.appendChild( nTfoot );
 

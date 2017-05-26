@@ -30,10 +30,45 @@ function pageSetting() {
         case '当前栏目：热门':
             $("#category-hot").addClass("active");
             category_temp = "news_hot";
-            console.log(category);
+            break;
+        case '当前栏目：视频':
+            $("#category-video").addClass("active");
+            category_temp = "news_video";
+            break;
+        case '当前栏目：图片':
+            $("#category-gallery").addClass("active");
+            category_temp = "news_image";
+            break;
+        case '当前栏目：社会':
+            $("#category-society").addClass("active");
+            category_temp = "news_society";
+            break;
+        case '当前栏目：娱乐':
+            $("#category-entertainment").addClass("active");
+            category_temp = "news_entertainment";
+            break;
+        case '当前栏目：科技':
+            $("#category-tech").addClass("active");
+            category_temp = "news_tech";
+            break;
+        case '当前栏目：体育':
+            $("#category-sports").addClass("active");
+            category_temp = "news_sports";
+            break;
+        case '当前栏目：汽车':
+            $("#category-car").addClass("active");
+            category_temp = "news_car";
+            break;
+        case '当前栏目：财经':
+            $("#category-finance").addClass("active");
+            category_temp = "news_finance";
+            break;
+        case '当前栏目：搞笑':
+            $("#category-funny").addClass("active");
+            category_temp = "funny";
             break;
         default:
-            console.log('something error')
+            console.log('something error');
     }
 }
 
@@ -46,8 +81,12 @@ function getCarousel() {
     });
 }
 function getList(){
+    let category_fetch = category_temp;
+    if(category_fetch == "news_video")
+        category_fetch = 'video';
     $.ajax({
-        url:base_url + category_temp + "&utm_source=toutiao&widen=1&max_behot_time=0&max_behot_time_tmp=0&tadrequire=true"
+        url:base_url + category_fetch + "&utm_source=toutiao&widen=1&max_behot_time="
+        +max_behot_time+"&max_behot_time_tmp="+max_behot_time+"&tadrequire=true"
         +"&as="+as_param+"&cp="+cp_param+"&callback=analyseList",
         type:'get',
         dataType:'jsonp',
@@ -71,27 +110,27 @@ function analyseCarousel(data) {
             tarray.push(temp);
         }
         //maybe for can do this, but i don't know :)
-        $("#carousel-foucus-href").attr('href', '/'+category_temp+'/'+adata[0].display_url.slice(7,adata[0].display_url.length-1));
+        $("#carousel-foucus-href").attr('href', '/'+category_temp+'/gallery/'+adata[0].display_url.slice(7,adata[0].display_url.length-1));
         $("#carousel-foucus-img").attr('src', adata[0].image_url);
         $("#carousel-foucus-text").text(adata[0].title);
 
-        $("#carousel-society-href").attr('href', '/'+category_temp+'/'+adata[1].display_url.slice(7,adata[1].display_url.length-1));
+        $("#carousel-society-href").attr('href', '/'+category_temp+'/gallery/'+adata[1].display_url.slice(7,adata[1].display_url.length-1));
         $("#carousel-society-img").attr('src', adata[1].image_url);
         $("#carousel-society-text").text(adata[1].title);
 
-        $("#carousel-entir-href").attr('href', '/'+category_temp+'/'+adata[2].display_url.slice(7,adata[2].display_url.length-1));
+        $("#carousel-entir-href").attr('href', '/'+category_temp+'/gallery/'+adata[2].display_url.slice(7,adata[2].display_url.length-1));
         $("#carousel-entir-img").attr('src', adata[2].image_url);
         $("#carousel-entir-text").text(adata[2].title);
 
-        $("#carousel-sport-href").attr('href', '/'+category_temp+'/'+adata[3].display_url.slice(7,adata[2].display_url.length-1));
+        $("#carousel-sport-href").attr('href', '/'+category_temp+'/gallery/'+adata[3].display_url.slice(7,adata[2].display_url.length-1));
         $("#carousel-sport-img").attr('src', adata[3].image_url);
         $("#carousel-sport-text").text(adata[3].title);
 
-        $("#carousel-military-href").attr('href', '/'+category_temp+'/'+adata[4].display_url.slice(7,adata[4].display_url.length-1));
+        $("#carousel-military-href").attr('href', '/'+category_temp+'/gallery/'+adata[4].display_url.slice(7,adata[4].display_url.length-1));
         $("#carousel-military-img").attr('src', adata[4].image_url);
         $("#carousel-military-text").text(adata[4].title);
 
-        $("#carousel-idol-href").attr('href', '/'+category_temp+'/'+adata[5].display_url.slice(7,adata[5].display_url.length-1));
+        $("#carousel-idol-href").attr('href', '/'+category_temp+'/gallery/'+adata[5].display_url.slice(7,adata[5].display_url.length-1));
         $("#carousel-idol-img").attr('src', adata[5].image_url);
         $("#carousel-idol-text").text(adata[5].title);
 
@@ -118,7 +157,11 @@ function analyseList(data){
                 source = adata[i].source;
 
             var content = getContent(adata[i]);
-
+            var type = 'fa fa-newspaper-o';
+            if(adata[i].article_genre == "video")
+                type = 'fa fa-video-camera';
+            else if(adata[i].article_genre == "gallery")
+                type = 'fa fa-photo';
             if(adata[i].media_avatar_url){
                 var newItem = '<li> ' +
                     '<img class="fa img-circle img-sm" alt="User Image" src='+ adata[i].media_avatar_url +'> ' +
@@ -126,7 +169,7 @@ function analyseList(data){
                     '<span class="time"><i class="fa fa-clock-o"></i>'+ milliToDate(adata[i].behot_time) +'</span> ' +
                     '<div class="timeline-header"> ' +
                     '<a>'+ source +'</a>' + ' · ' +
-                    '<i class="fa fa-comments-o"></i> ' + comments_count +
+                    '<i class="fa fa-comments-o"></i> ' + comments_count + ' · ' + '<i class="'+type+'"></i>' +
                     '</div> ' +
                     '<div class="timeline-body"><div class="row"> ' + content + '</div>' +
                     '</div> ' +
@@ -135,9 +178,9 @@ function analyseList(data){
                 $(".timeline").append(newItem);
             }
         }
+        max_behot_time = data.next.max_behot_time;
         console.log('success')
     }
-    console.log(tarray)
 }
 
 function getContent(data) {
@@ -218,6 +261,17 @@ function getContent(data) {
     }
     return item;
 }
+
+
+$(window).scroll(function () {
+    var scrollTop = $(this).scrollTop();
+    var scrollHeight = $(document).height();
+    var windowHeight = $(this).height();
+    if (scrollTop + windowHeight == scrollHeight) {
+        getList();
+    }
+});
+
 
 function getParam(){
     var asas;

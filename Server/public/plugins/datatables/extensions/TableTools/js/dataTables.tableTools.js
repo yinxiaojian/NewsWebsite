@@ -2157,7 +2157,7 @@ TableTools.prototype = {
 	 *  @param   {String} oConfig.sNewline New line options
 	 *  @param   {Mixed} oConfig.mColumns Which columns should be included in the output
 	 *  @param   {Boolean} oConfig.bHeader Include the header
-	 *  @param   {Boolean} oConfig.bFooter Include the footer
+	 *  @param   {Boolean} oConfig.bFooter Include the footer.ejs
 	 *  @param   {Boolean} oConfig.bSelectedOnly Include only the selected rows in the output
 	 *  @returns {String} Concatenated string of data
 	 *  @private 

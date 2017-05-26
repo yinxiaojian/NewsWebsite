@@ -31,10 +31,45 @@ function pageSetting() {
         case '当前栏目：热门':
             $("#category-hot").addClass("active");
             category_temp = "news_hot";
-            console.log(category);
+            break;
+        case '当前栏目：视频':
+            $("#category-video").addClass("active");
+            category_temp = "news_video";
+            break;
+        case '当前栏目：图片':
+            $("#category-gallery").addClass("active");
+            category_temp = "news_image";
+            break;
+        case '当前栏目：社会':
+            $("#category-society").addClass("active");
+            category_temp = "news_society";
+            break;
+        case '当前栏目：娱乐':
+            $("#category-entertainment").addClass("active");
+            category_temp = "news_entertainment";
+            break;
+        case '当前栏目：科技':
+            $("#category-tech").addClass("active");
+            category_temp = "news_tech";
+            break;
+        case '当前栏目：体育':
+            $("#category-sports").addClass("active");
+            category_temp = "news_sports";
+            break;
+        case '当前栏目：汽车':
+            $("#category-car").addClass("active");
+            category_temp = "news_car";
+            break;
+        case '当前栏目：财经':
+            $("#category-finance").addClass("active");
+            category_temp = "news_finance";
+            break;
+        case '当前栏目：搞笑':
+            $("#category-funny").addClass("active");
+            category_temp = "funny";
             break;
         default:
-            console.log('something error')
+            console.log('something error');
     }
 }
 
@@ -59,7 +94,6 @@ function parsingRes(data) {
     $("img").each(function () {
         $(this).attr("width","100%");
     });
-    console.log(title);
     console.log('parsing finish');
 }
 
@@ -90,7 +124,6 @@ function analyseComment() {
                         '</div> ' +
                         '</li>';
                     $(".timeline").append(newItem);
-                    console.log(content);
                 }
                 console.log('success')
             }

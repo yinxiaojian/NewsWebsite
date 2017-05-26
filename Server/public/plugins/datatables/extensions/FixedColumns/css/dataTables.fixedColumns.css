@@ -1,6 +1,6 @@
 
 
-/* Block out what is behind the fixed column's header and footer */
+/* Block out what is behind the fixed column's header and footer.ejs */
 table.DTFC_Cloned thead,
 table.DTFC_Cloned tfoot {
 	background-color: white;

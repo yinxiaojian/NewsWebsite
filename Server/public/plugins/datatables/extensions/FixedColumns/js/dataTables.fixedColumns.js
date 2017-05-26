@@ -154,7 +154,7 @@ var FixedColumns = function ( dt, init ) {
 		"body": null,
 
 		/**
-		 * DataTables footer table
+		 * DataTables footer.ejs table
 		 *  @type     node
 		 *  @default  null
 		 */
@@ -229,7 +229,7 @@ var FixedColumns = function ( dt, init ) {
 				"body": null,
 
 				/**
-				 * Cloned footer table
+				 * Cloned footer.ejs table
 				 *  @type     node
 				 *  @default  null
 				 */
@@ -256,7 +256,7 @@ var FixedColumns = function ( dt, init ) {
 				"body": null,
 
 				/**
-				 * Cloned footer table
+				 * Cloned footer.ejs table
 				 *  @type     node
 				 *  @default  null
 				 */
@@ -643,8 +643,8 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	 * Set up the DOM for the fixed column. The way the layout works is to create a 1x3 grid
 	 * for the left column, the DataTable (for which we just reuse the scrolling element DataTable
 	 * puts into the DOM) and the right column. In each of he two fixed column elements there is a
-	 * grouping wrapper element and then a head, body and footer wrapper. In each of these we then
-	 * place the cloned header, body or footer tables. This effectively gives as 3x3 grid structure.
+	 * grouping wrapper element and then a head, body and footer.ejs wrapper. In each of these we then
+	 * place the cloned header, body or footer.ejs tables. This effectively gives as 3x3 grid structure.
 	 *  @returns {void}
 	 *  @private
 	 */
@@ -775,7 +775,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 			oGrid.left.wrapper.style.height = "1px";
 			oGrid.left.body.style.height = iBodyHeight+"px";
 			if ( oGrid.left.foot ) {
-				oGrid.left.foot.style.top = (oOverflow.x ? oOverflow.bar : 0)+"px"; // shift footer for scrollbar
+				oGrid.left.foot.style.top = (oOverflow.x ? oOverflow.bar : 0)+"px"; // shift footer.ejs for scrollbar
 			}
 
 			scrollbarAdjust( oGrid.left.liner, iLeftWidth );
@@ -841,7 +841,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	/**
 	 * Clone and position the fixed columns
 	 *  @returns {void}
-	 *  @param   {Boolean} bAll Indicate if the header and footer should be updated as well (true)
+	 *  @param   {Boolean} bAll Indicate if the header and footer.ejs should be updated as well (true)
 	 *  @private
 	 */
 	"_fnDraw": function ( bAll )
@@ -867,7 +867,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	/**
 	 * Clone the right columns
 	 *  @returns {void}
-	 *  @param   {Boolean} bAll Indicate if the header and footer should be updated as well (true)
+	 *  @param   {Boolean} bAll Indicate if the header and footer.ejs should be updated as well (true)
 	 *  @private
 	 */
 	"_fnCloneRight": function ( bAll )
@@ -893,7 +893,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	/**
 	 * Clone the left columns
 	 *  @returns {void}
-	 *  @param   {Boolean} bAll Indicate if the header and footer should be updated as well (true)
+	 *  @param   {Boolean} bAll Indicate if the header and footer.ejs should be updated as well (true)
 	 *  @private
 	 */
 	"_fnCloneLeft": function ( bAll )
@@ -917,7 +917,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 
 
 	/**
-	 * Make a copy of the layout object for a header or footer element from DataTables. Note that
+	 * Make a copy of the layout object for a header or footer.ejs element from DataTables. Note that
 	 * this method will clone the nodes in the layout object.
 	 *  @returns {Array} Copy of the layout array
 	 *  @param   {Object} aoOriginal Layout array from DataTables (aoHeader or aoFooter)
@@ -973,11 +973,11 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	/**
 	 * Clone the DataTable nodes and place them in the DOM (sized correctly)
 	 *  @returns {void}
-	 *  @param   {Object} oClone Object containing the header, footer and body cloned DOM elements
+	 *  @param   {Object} oClone Object containing the header, footer.ejs and body cloned DOM elements
 	 *  @param   {Object} oGrid Grid object containing the display grid elements for the cloned
 	 *                    column (left or right)
 	 *  @param   {Array} aiColumns Column indexes which should be operated on from the DataTable
-	 *  @param   {Boolean} bAll Indicate if the header and footer should be updated as well (true)
+	 *  @param   {Boolean} bAll Indicate if the header and footer.ejs should be updated as well (true)
 	 *  @private
 	 */
 	"_fnClone": function ( oClone, oGrid, aiColumns, bAll )
@@ -1168,7 +1168,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 				oClone.footer.style.width = "100%";
 				oGrid.foot.appendChild( oClone.footer );
 
-				/* Copy the footer just like we do for the header */
+				/* Copy the footer.ejs just like we do for the header */
 				aoCloneLayout = this._fnCopyLayout( dt.aoFooter, aiColumns );
 				var jqCloneTfoot = $('>tfoot', oClone.footer);
 				jqCloneTfoot.empty();
@@ -1197,7 +1197,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 			this._fnEqualiseHeights( 'tfoot', this.dom.footer, oClone.footer );
 		}
 
-		/* Equalise the column widths between the header footer and body - body get's priority */
+		/* Equalise the column widths between the header footer.ejs and body - body get's priority */
 		var anUnique = dt.oApi._fnGetUniqueThs( dt, $('>thead', oClone.header)[0] );
 		$(anUnique).each( function (i) {
 			iColumn = aiColumns[i];

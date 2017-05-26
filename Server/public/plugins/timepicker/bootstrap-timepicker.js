@@ -333,7 +333,7 @@
           '<div class="modal-content">'+
             templateContent +
           '</div>'+
-          '<div class="modal-footer">'+
+          '<div class="modal-footer.ejs">'+
             '<a href="#" class="btn btn-primary" data-dismiss="modal">OK</a>'+
           '</div>'+
         '</div>';
