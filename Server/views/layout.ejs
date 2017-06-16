@@ -18,6 +18,8 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
+                <li><a data-toggle="modal" href="#myModal">登录</a></li>
+                <!-- Modal -->
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -123,3 +125,80 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+<div class="modal fade" id="myModal">
+    <div class="login-box">
+
+        <div class="login-logo">
+            <img src="/images/funny.png" width="100px">
+        </div>
+        <!-- /.login-logo -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs nav-pills nav-fill">
+                <li class="active"><a href="#login" data-toggle="tab">登录</a></li>
+                <li><a href="#register" data-toggle="tab">注册</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="login" class="tab-pane active">
+                <p class="login-box-msg">欢迎来到 <b>闻所未闻</b></p>
+
+                <form action="#" method="post">
+                    <div class="form-group has-feedback">
+                        <input type="email" class="form-control" placeholder="邮箱">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="密码">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <p class="text-center"></p>
+                </form>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-xs-12">
+                        <button class="btn btn-danger btn-block btn-flat">忘记密码</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                </div>
+
+                <div id="register" class="tab-pane">
+                    <p class="login-box-msg">欢迎来到 <b>闻所未闻</b></p>
+
+                    <form action="#" method="post">
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control" placeholder="用户名">
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="email" class="form-control" placeholder="邮箱">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" placeholder="密码">
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" placeholder="验证密码">
+                            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+</div>
