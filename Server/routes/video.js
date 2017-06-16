@@ -3,7 +3,6 @@ var router = express.Router();
 var videoFetch = require('../models/videofetch');
 router.get('/content/:group_id', function(req, res, next) {
     videoFetch.getVideoOriginalURL(req.params.group_id, function (response) {
-        console.log('test');
         console.log(response);
         res.send(response);
     });

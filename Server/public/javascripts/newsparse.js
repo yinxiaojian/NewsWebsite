@@ -3,6 +3,7 @@ var groupId;
 var content;
 var title;
 var offset = 0;
+var category_temp = "";
 
 $(function(){
     initial();

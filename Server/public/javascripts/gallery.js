@@ -5,6 +5,7 @@ var title;
 var label;
 var media;
 var offset = 0;
+var category_temp = "";
 
 $(function(){
     initial();

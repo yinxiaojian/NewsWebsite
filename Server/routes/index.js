@@ -35,8 +35,9 @@ router.get('/news_finance', function(req, res, next) {
 router.get('/funny', function(req, res, next) {
     res.render('index', { pagetype:'搞笑'});
 });
-
-
+router.get('/sex', function(req, res, next) {
+    res.render('sex', { pagetype: '美女' , title: '美女'});
+});
 
 router.get('/__all__/:type/:newsid', function(req, res, next) {
     res.render(req.params.type, { pagetype:'推荐', nid:'newsid' });
@@ -70,6 +71,9 @@ router.get('/news_finance/:type/:newsid', function(req, res, next) {
 });
 router.get('/funny/:type/:newsid', function(req, res, next) {
     res.render(req.params.type, { pagetype:'搞笑', nid:'newsid' });
+});
+router.get('/sex/:girlsid', function(req, res, next) {
+    res.render('sex', { pagetype:'美女', title: req.params.girlsid});
 });
 
 module.exports = router;

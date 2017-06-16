@@ -4,11 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 
 var index = require('./routes/index');
 var news = require('./routes/news');
 var video = require('./routes/video');
 var gallery = require('./routes/gallery');
+var sex = require('./routes/sex');
 var users = require('./routes/users');
 
 var app = express();
@@ -24,11 +27,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(session({
+//     store: new redisStore({
+//         client: redis.client
+//     }),
+//     secret: randomstring.generate({
+//         length: 128,
+//         charset: 'alphabetic'
+//     }),
+//     cookie: {
+//         domain: "112.74.124.145:3002/",
+//         maxAge: 60000*1000
+//     },
+//     resave: true,
+//     saveUninitialized: true
+// }));
+
+
 
 app.use('/', index);
 app.use('/news',news);
 app.use('/video', video);
 app.use('/gallery', gallery);
+app.use('/sex', sex);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
