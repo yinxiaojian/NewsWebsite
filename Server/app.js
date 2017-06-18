@@ -4,8 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var randomstring = require('randomstring');
 var session = require('express-session');
-var redisStore = require('connect-redis')(session);
+// var redisStore = require('connect-redis')(session);
+// var redis = require('./models/redis');
 
 var index = require('./routes/index');
 var news = require('./routes/news');
@@ -27,21 +29,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(session({
-//     store: new redisStore({
-//         client: redis.client
-//     }),
-//     secret: randomstring.generate({
-//         length: 128,
-//         charset: 'alphabetic'
-//     }),
-//     cookie: {
-//         domain: "112.74.124.145:3002/",
-//         maxAge: 60000*1000
-//     },
-//     resave: true,
-//     saveUninitialized: true
-// }));
+app.use(session({
+    // store: new redisStore({
+    //     client: redis.client
+    // }),
+    secret: randomstring.generate({
+        length: 128,
+        charset: 'alphabetic'
+    }),
+    cookie: {
+        maxAge: 60000*1000
+    },
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 

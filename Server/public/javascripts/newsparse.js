@@ -92,7 +92,7 @@ function parsingRes(data) {
     content = data.article_content;
     $("#article-content").html(content);
     $("#article-title").text(title);
-    $("img").each(function () {
+    $("#article-content img").each(function () {
         $(this).attr("width","100%");
     });
     console.log('parsing finish');

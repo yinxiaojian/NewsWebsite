@@ -18,49 +18,35 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <li><a data-toggle="modal" href="#myModal">登录</a></li>
+                <li id="btn-login"><a data-toggle="modal" href="#myModal">登录</a></li>
                 <!-- Modal -->
                 <!-- User Account Menu -->
-                <li class="dropdown user user-menu">
+                <li id="user-menu" class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="/images/funny.png" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs user-name"><%= user_name %></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                            <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                            <img src="/images/funny.png" class="img-circle" alt="User Image">
+                            <p class="user-name">
+                                <%= user_name %>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>
-                            <!-- /.row -->
+                            <p>
+                                <small class="user-email"><%= user_email %></small>
+                            </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat">主页</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="" id="btn-logout" class="btn btn-default btn-flat">注销</a>
                             </div>
                         </li>
                     </ul>
@@ -82,19 +68,19 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/images/funny.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p class="user-name"><%= user_name %></p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
         <!-- search form (Optional) -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="q" class="form-control" placeholder="搜索新闻...">
                 <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -125,7 +111,7 @@
     </section>
     <!-- /.sidebar -->
 </aside>
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="myModal" tabindex="-1">
     <div class="login-box">
 
         <div class="login-logo">
@@ -134,58 +120,58 @@
         <!-- /.login-logo -->
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs nav-pills nav-fill">
-                <li class="active"><a href="#login" data-toggle="tab">登录</a></li>
-                <li><a href="#register" data-toggle="tab">注册</a></li>
+                <li id="control-login" class="active"><a href="#login" data-toggle="tab">登录</a></li>
+                <li id="control-register"><a href="#register" data-toggle="tab">注册</a></li>
             </ul>
             <div class="tab-content">
                 <div id="login" class="tab-pane active">
-                <p class="login-box-msg">欢迎来到 <b>闻所未闻</b></p>
+                    <p class="login-box-msg">欢迎来到 <b>闻所未闻</b></p>
 
-                <form action="#" method="post">
-                    <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="邮箱">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="密码">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
+                    <form id="form-login" method="post">
+                        <div class="form-group has-feedback">
+                            <input type="email" class="form-control" id="login-email" name="email" placeholder="邮箱" required>
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" id="login-password" name="password" minlength="6" placeholder="密码 六位以上" required>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-xs-12">
+                                <button id="button-login" type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <p class="text-center"></p>
+                    </form>
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-xs-12">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                            <button class="btn btn-danger btn-block btn-flat">忘记密码</button>
                         </div>
                         <!-- /.col -->
                     </div>
-                    <p class="text-center"></p>
-                </form>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-xs-12">
-                        <button class="btn btn-danger btn-block btn-flat">忘记密码</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
                 </div>
 
                 <div id="register" class="tab-pane">
                     <p class="login-box-msg">欢迎来到 <b>闻所未闻</b></p>
 
-                    <form action="#" method="post">
+                    <form id="form-register" method="post">
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="用户名">
+                            <input type="text" class="form-control" id="register-name" name="name" minlength="3" placeholder="用户名 三位以上" required>
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="邮箱">
+                            <input type="email" class="form-control" id="register-email" name="email" placeholder="邮箱" required>
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="密码">
+                            <input type="password" class="form-control" id="register-password" name="password" minlength="6" placeholder="密码" required>
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="验证密码">
+                            <input type="password" class="form-control" name="repassword" placeholder="验证密码" required>
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         </div>
                         <div class="row">
