@@ -1,6 +1,12 @@
 
 
 $(function () {
+    $.get('/users/status',function (result) {
+        if(result.code==8)
+            $("#button-login").hide();
+        else if(result.code==9)
+            $("#button-login").show();
+    });
     $("#form-login").validate({
         submitHandler: function () {
             $.post("/users/login",
@@ -26,14 +32,7 @@ $(function () {
                             break;
                         case 3:
                             alert("登陆成功");
-                            $("#form-login")[0].reset();
-                            $("#form-register")[0].reset();
-                            $('.form-group').removeClass('has-success');
-                            $('.form-group').removeClass('has-error');
-                            $('.user-name').text(result.name);
-                            $('.user-email').text("邮箱："+result.email);
-                            $('#myModal').modal('hide');
-                            $('#btn-login').hide();
+                            window.location.reload();
                             break;
                         default:
                             console.log("+_!");
@@ -80,9 +79,8 @@ $("#btn-logout").click(function () {
         if (result.code == 4)
         {
             alert("注销成功");
-            $('.user-name').text("访客");
-            $('.user-email').text("邮箱：huaji@huaji.com");
-            $('#btn-login').show();
         }
     });
 });
+
+

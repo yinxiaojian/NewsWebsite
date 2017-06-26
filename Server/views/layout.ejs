@@ -43,7 +43,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">主页</a>
+                                <a data-toggle="modal" href="#modal-custom" class="btn btn-default btn-flat">定制</a>
                             </div>
                             <div class="pull-right">
                                 <a href="" id="btn-logout" class="btn btn-default btn-flat">注销</a>
@@ -96,15 +96,41 @@
             <li id="category-recommend"><a href="/"><i class="fa fa-link"></i> <span>推荐</span></a></li>
             <li id="category-hot"><a href="/news_hot"><i class="fa fa-fire"></i> <span>热门</span></a></li>
             <li id="category-video"><a href="/news_video"><i class="fa fa-video-camera"></i> <span>视频</span></a></li>
-            <li id="category-image"><a href="/news_image"><i class="fa fa-picture-o"></i> <span>图片</span></a></li>
+
+            <!--<li id="category-image"><a href="/news_image"><i class="fa fa-picture-o"></i> <span>图片</span></a></li>-->
+
+            <% if(user_col.charAt(0) == '1') { %>
             <li id="category-society"><a href="/news_society"><i class="fa fa-group"></i> <span>社会</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(1) == '1') { %>
             <li id="category-entertainment"><a href="/news_entertainment"><i class="fa fa-tv"></i> <span>娱乐</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(2) == '1') { %>
             <li id="category-tech"><a href="/news_tech"><i class="fa fa-rocket"></i> <span>科技</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(3) == '1') { %>
             <li id="category-sports"><a href="/news_sports"><i class="fa fa-soccer-ball-o"></i> <span>体育</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(4) == '1') { %>
             <li id="category-car"><a href="/news_car"><i class="fa fa-car"></i> <span>汽车</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(5) == '1') { %>
             <li id="category-finance"><a href="/news_finance"><i class="fa fa-line-chart"></i> <span>财经</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(6) == '1') { %>
             <li id="category-funny"><a href="/funny"><i class="fa fa-hand-peace-o"></i> <span>搞笑</span></a></li>
+            <% } %>
+
+            <% if(user_col.charAt(7) == '1') { %>
             <li id="category-sex"><a href="/sex"><i class="fa  fa-venus"></i> <span>美女</span></a></li>
+            <% }%>
+
         </ul>
 
         <!-- /.sidebar-menu -->
@@ -187,4 +213,132 @@
         </div>
         <!-- /.login-box-body -->
     </div>
+</div>
+
+<div class="modal" id="modal-custom">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i></button>
+                <h4 class="modal-title">个人定制</h4>
+            </div>
+            <div class="modal-body">
+                <div id="callout-custom" class="callout callout-info">
+                    <h4>不将就</h4>
+                    请选择主题和喜欢的栏目，系统将为您个性化定制主页
+                </div>
+
+                <div id="box-skin" class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">主题选择</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="custom-form-radio" class="form-group">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-blue" value="blue">&nbsp &nbsp 海军蓝
+                                    <span class="bg-black-active color-palette"><span></span></span>
+                                </label>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-black" value="black">&nbsp &nbsp 曜石黑
+                                </label>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-purple" value="purple">&nbsp &nbsp 淡雅紫
+                                </label>
+                                </div>
+                            </div>
+                                <div> &nbsp </div>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-yellow" value="yellow">&nbsp &nbsp 鸭蛋黄
+                                </label>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-red" value="red">&nbsp &nbsp 魅惑红
+                                </label>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio-green" value="green">&nbsp &nbsp 草木绿
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+                <div id="box-col" class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">板块选择</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="custom-form-check" class="form-group">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox1" value="1">&nbsp &nbsp 社会
+                                        <span class="bg-black-active color-palette"><span></span></span>
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox2" value="2">&nbsp &nbsp 娱乐
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox3" value="3">&nbsp &nbsp 科技
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox4" value="4">&nbsp &nbsp 体育
+                                    </label>
+                                </div>
+                            </div>
+                            <div> &nbsp </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox5" value="5">&nbsp &nbsp 汽车
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox6" value="6">&nbsp &nbsp 财经
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox7" value="7">&nbsp &nbsp 搞笑
+                                    </label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="inlinecheckboxOptions" id="inlinecheckbox8" value="8">&nbsp &nbsp 美女
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button id="custom-save" type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
