@@ -59,7 +59,6 @@ $("#custom-save").click(function () {
             skin : skin,
             col: col
         },
-
         function (result, status) {
             if( isSuccess(status) ){
                 if(result.code == 7)

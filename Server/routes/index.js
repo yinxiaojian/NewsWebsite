@@ -19,21 +19,21 @@ router.get('/news_hot', function(req, res, next) {
     if (user!=null)
         res.render('index', { pagetype:'热门', user_name:user.name, user_email:user.email,user_col:user.col,user_skin:user.skin});
     else
-        res.render('index', { pagetype: '推荐',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
+        res.render('index', { pagetype: '热门',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
 });
 router.get('/news_video', function(req, res, next) {
     let user = req.session.user;
     if (user!=null)
         res.render('index', { pagetype:'视频', user_name:user.name, user_email:user.email,user_col:user.col,user_skin:user.skin});
     else
-        res.render('index', { pagetype: '推荐',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
+        res.render('index', { pagetype: '视频',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
 });
 router.get('/news_image', function(req, res, next) {
     let user = req.session.user;
     if (user!=null)
         res.render('index', { pagetype:'图片', user_name:user.name, user_email:user.email,user_col:user.col,user_skin:user.skin});
     else
-        res.render('index', { pagetype: '推荐',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
+        res.render('index', { pagetype: '图片',user_name:name_def,user_email:email_def,user_col:col_def, user_skin:skin_def});
 });
 router.get('/news_society', function(req, res, next) {
     let user = req.session.user;
